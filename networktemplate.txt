@@ -1,0 +1,42 @@
+<NetworkConfigSection xmlns="http://www.vmware.com/vcloud/v1.5" xmlns:ovf="http://schemas.dmtf.org/ovf/envelope/1" type="application/vnd.vmware.vcloud.networkConfigSection+xml" href="https://vcd-dn5.pd-cloud.com/api/vApp/vapp-$vappValue/networkConfigSection/" ovf:required="false" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://schemas.dmtf.org/ovf/envelope/1 http://schemas.dmtf.org/ovf/envelope/1/dsp8023_1.1.0.xsd http://www.vmware.com/vcloud/v1.5 http://vcd-dn5.pd-cloud.com/api/v1.5/schema/master.xsd">
+    <ovf:Info>The configuration parameters for logical networks</ovf:Info>
+    <Link rel="edit" type="application/vnd.vmware.vcloud.networkConfigSection+xml" href="https://vcd-dn5.pd-cloud.com/api/vApp/vapp-$vappValue/networkConfigSection/"/>
+    <NetworkConfig networkName="vAppNet-vAppNet-vAppNet-internal">
+        <!--<Link rel="repair" href="https://vcd-dn5.pd-cloud.com/api/admin/network/786360ea-1f92-42cb-a6ad-7b47caf809ca/action/reset"/>
+        <Link rel="syncSyslogSettings" type="application/vnd.vmware.vcloud.task+xml" href="https://vcd-dn5.pd-cloud.com/api/admin/network/786360ea-1f92-42cb-a6ad-7b47caf809ca/action/syncSyslogServerSettings"/>-->
+        <Description/>
+        <Configuration>
+           
+            <ParentNetwork name="$parentNetwork" id="$netguid" href="https://vcd-dn5.pd-cloud.com/api/admin/network/$netguid"/>
+            <FenceMode>natRouted</FenceMode>
+            <RetainNetInfoAcrossDeployments>true</RetainNetInfoAcrossDeployments>
+            <Features>
+                <FirewallService>
+                    <IsEnabled>false</IsEnabled>
+                    <DefaultAction>drop</DefaultAction>
+                    <LogDefaultAction>false</LogDefaultAction>
+                    <FirewallRule>
+                        <IsEnabled>true</IsEnabled>
+                        <MatchOnTranslate>false</MatchOnTranslate>
+                        <Description>Allow all outgoing traffic</Description>
+                        <Policy>allow</Policy>
+                        <Protocols>
+                            <Any>true</Any>
+                        </Protocols>
+                        <Port>-1</Port>
+                        <DestinationPortRange>Any</DestinationPortRange>
+                        <DestinationIp>external</DestinationIp>
+                        <SourcePort>-1</SourcePort>
+                        <SourcePortRange>Any</SourcePortRange>
+                        <SourceIp>internal</SourceIp>
+                        <EnableLogging>false</EnableLogging>
+                    </FirewallRule>
+                </FirewallService>
+              
+            </Features>
+            <SyslogServerSettings/>
+        </Configuration>
+        <IsDeployed>false</IsDeployed>
+    </NetworkConfig>
+</NetworkConfigSection>
+
